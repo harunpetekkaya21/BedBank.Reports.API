@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace BedBankReports.API.Models.Domain
+﻿namespace BedBankReports.API.Models.Dto.Rate
 {
-    public class Rate
+    public class CreateRateDto
     {
-        public int Id { get; set; }
         public DateOnly StartDate { get; set; }
         public DateOnly EndDate { get; set; }
 
@@ -13,15 +10,10 @@ namespace BedBankReports.API.Models.Domain
         public float WebBeds { get; set; }
 
         public float OurBestPrice { get; set; }
-        
+
         public float OtherToPrice { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public  float? DiffEuro { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public float? DiffPercent { get; set; }//Yuzdesı
 
         public DateTime CreatedDate { get; set; }
         public int HotelId { get; set; }
-        public  Hotel?  Hotel { get; set; }
     }
 }

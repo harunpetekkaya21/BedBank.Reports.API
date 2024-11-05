@@ -16,6 +16,7 @@
         public int? RoomNights { get; set; }
         public int? Paxes { get; set; }
         public int? ReservationCount { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public DateOnly Date { get; set; }
 

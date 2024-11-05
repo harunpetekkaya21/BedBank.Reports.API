@@ -1,5 +1,6 @@
 ﻿using BedBankReports.API.Data;
 using BedBankReports.API.Models.Domain;
+using BedBankReports.API.Models.Dto.Rate;
 using BedBankReports.API.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -56,6 +57,28 @@ namespace BedBankReports.API.Repositories.Implementation
           var result= await dbContext.Rates.Where(x=>x.HotelId==hotelId && x.StartDate.Equals(startDate) && x.EndDate.Equals(endDate)).ToListAsync();
 
             return result;
+        }
+
+        public async Task<CreateRateDto> CreateRateAsync(CreateRateDto rate)
+        {
+            await dbContext.Rates.AddAsync(new Rate
+            {
+                B2B=rate.B2B,
+                OtherToPrice=rate.OtherToPrice,
+                OurBestPrice=rate.OurBestPrice,
+                RoomType=rate.RoomType,
+               StartDate=rate.StartDate,
+               EndDate=rate.EndDate,
+               CreatedDate=rate.CreatedDate,
+               WebBeds=rate.WebBeds,
+               HotelId=rate.HotelId,
+               DiffEuro=1.2f,
+               DiffPercent=1.2f
+              
+
+            });
+            await dbContext.SaveChangesAsync();
+            return rate;
         }
     }
 }

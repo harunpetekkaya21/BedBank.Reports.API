@@ -9,16 +9,25 @@ namespace BedBankReports.API.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+        public ApplicationDbContext()
+        {
+            
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seed();
+            modelBuilder.Entity<Rate>().Property(x=>x.DiffEuro).HasComputedColumnSql("[OtherToPrice]-[OurBestPrice]", true);
+            modelBuilder.Entity<Rate>().Property(x=>x.DiffPercent).HasComputedColumnSql("([OtherToPrice]/[OurBestPrice])-1", true);
+
+
             base.OnModelCreating(modelBuilder);
 
         }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Rate> Rates { get; set; }
         public DbSet<Sale> Sales { get; set; }
+        public DbSet<FileData> FileDatas { get; set; }
 
     }
 }
