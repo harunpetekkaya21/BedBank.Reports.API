@@ -9,7 +9,8 @@ namespace BedBankReports.API.Repositories.Interface
 
         Task<Hotel> GetByIdAsync(int id);
 
-      
+        Task<Hotel> CreateHotelAsync(Hotel hotel);
+        Task<Hotel> GetByNameAsync(string hotelName);
         Task<int> GetCount();
     }
 }

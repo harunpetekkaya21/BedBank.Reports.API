@@ -33,7 +33,17 @@ namespace BedBankReports.API.Repositories.Implementation
         {
             return await dbContext.Hotels.CountAsync();
         }
+        public async Task<Hotel> CreateHotelAsync(Hotel hotel)
+        {
+            await dbContext.AddAsync(hotel);
+            await dbContext.SaveChangesAsync();
+            return hotel;
+        }
 
+        public async Task<Hotel> GetByNameAsync(string hotelName)
+        {
+            return await dbContext.Hotels.Where(x => x.HotelName == hotelName).FirstOrDefaultAsync();
+        }
 
     }
 }

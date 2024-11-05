@@ -1,8 +1,10 @@
 ﻿using BedBankReports.API.Models.Dto.Hotel;
+using BedBankReports.API.Models.Dto.Login;
 using BedBankReports.API.Models.Dto.Rate;
 using BedBankReports.API.Repositories.Implementation;
 using BedBankReports.API.Repositories.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BedBankReports.API.Controllers
@@ -54,6 +56,15 @@ namespace BedBankReports.API.Controllers
 
 
             return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> CreateRateAsync([FromBody]CreateRateDto crateRateDto)
+        {
+            await  rateRepository.CreateRateAsync(crateRateDto);
+            return Ok(crateRateDto);
+            
         }
 
         [HttpGet]
@@ -197,6 +208,46 @@ namespace BedBankReports.API.Controllers
 
 
             return Ok(count);
+        }
+
+        [HttpGet]
+        [Route("getLastDateTime")]
+        public async Task<IActionResult> GetLastDateTime()
+        {
+            DateTime date = await rateRepository.GetLastDateTime();
+
+            //var responseDto = new List<HotelDto>();
+
+            //foreach (var item in hotels)
+            //{
+            //    responseDto.Add(new HotelDto { Id = item.Id, HotelName = item.HotelName });
+            //}
+
+
+            return Ok(date);
+        }
+
+        [HttpGet]
+        [Route("getlistratedatesbyHotel/{id}")]
+        public async Task<IActionResult> GetListRateDatesByHotel([FromRoute] int id)
+        {
+            var result =await rateRepository.GetListRateDatesByHotelAsync(id);
+            return Ok(result);
+        }
+        
+        [HttpGet]
+        [Route("getroomsbyhotelanddate/{id}/{startDate}/{endDate}")]
+        public async Task<IActionResult> GetRoomsByHotelAndDates([FromRoute] int id, [FromRoute] DateOnly startDate, [FromRoute] DateOnly endDate)
+        {
+            var result = await rateRepository.GetRoomsByHotelAndDates(id,startDate,endDate);
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("getratesbyroomsandhotelanddate/{id}/{startDate}/{endDate}/{roomType}")]
+        public async Task<IActionResult> GetRatesByRoomAndHotelAndDates([FromRoute] int id, [FromRoute] DateOnly startDate, [FromRoute] DateOnly endDate, [FromRoute] string roomType)
+        {
+            var result = await rateRepository.GetRatesByRoomAndHotelAndDates(id, startDate, endDate,roomType);
+            return Ok(result);
         }
     }
 }
