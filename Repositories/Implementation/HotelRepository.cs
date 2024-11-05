@@ -14,14 +14,7 @@ namespace BedBankReports.API.Repositories.Implementation
             this.dbContext = dbContext;
         }
 
-        public async Task<Hotel> CreateHotelAsync(Hotel hotel)
-        {
-            await dbContext.AddAsync(hotel);
-            await dbContext.SaveChangesAsync(); 
-            return hotel;
-
-        }
-
+       
         public async Task<IEnumerable<Hotel>> GetAllAsync()
         {
 
@@ -34,11 +27,6 @@ namespace BedBankReports.API.Repositories.Implementation
         public async Task<Hotel> GetByIdAsync(int id)
         {
             return await dbContext.Hotels.FirstOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task<Hotel> GetByNameAsync(string hotelName)
-        {
-            return await dbContext.Hotels.Where(x => x.HotelName == hotelName).FirstOrDefaultAsync();
         }
 
         public async Task<int> GetCount()

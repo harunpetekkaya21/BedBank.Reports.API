@@ -45,8 +45,8 @@ namespace BedBankReports.API.Controllers
                     WebBeds = item.WebBeds,
                     OurBestPrice = item.OurBestPrice,
                     OtherToPrice = item.OtherToPrice,
-                    DiffEuro = (float)item.DiffEuro,
-                    DiffPercent = (float)item.DiffPercent,
+                    DiffEuro = item.DiffEuro,
+                    DiffPercent = item.DiffPercent,
 
 
                 });
@@ -76,8 +76,8 @@ namespace BedBankReports.API.Controllers
                     WebBeds = item.WebBeds,
                     OurBestPrice = item.OurBestPrice,
                     OtherToPrice = item.OtherToPrice,
-                    DiffEuro = (float)item.DiffEuro,
-                    DiffPercent = (float)item.DiffPercent,
+                    DiffEuro = item.DiffEuro,
+                    DiffPercent = item.DiffPercent,
 
 
                 });
@@ -111,8 +111,8 @@ namespace BedBankReports.API.Controllers
                 WebBeds = rate.WebBeds,
                 OurBestPrice = rate.OurBestPrice,
                 OtherToPrice = rate.OtherToPrice,
-                DiffEuro = (float)rate.DiffEuro,
-                DiffPercent = (float)rate.DiffPercent,
+                DiffEuro = rate.DiffEuro,
+                DiffPercent = rate.DiffPercent,
 
             };
 
@@ -140,8 +140,8 @@ namespace BedBankReports.API.Controllers
                     WebBeds = item.WebBeds,
                     OurBestPrice = item.OurBestPrice,
                     OtherToPrice = item.OtherToPrice,
-                    DiffEuro = (float)item.DiffEuro,
-                    DiffPercent = (float)item.DiffPercent,
+                    DiffEuro = item.DiffEuro,
+                    DiffPercent = item.DiffPercent,
 
 
                 });
@@ -171,8 +171,8 @@ namespace BedBankReports.API.Controllers
                     WebBeds = item.WebBeds,
                     OurBestPrice = item.OurBestPrice,
                     OtherToPrice = item.OtherToPrice,
-                    DiffEuro = (float)item.DiffEuro,
-                    DiffPercent = (float)item.DiffPercent,
+                    DiffEuro = item.DiffEuro,
+                    DiffPercent = item.DiffPercent,
 
 
                 });
