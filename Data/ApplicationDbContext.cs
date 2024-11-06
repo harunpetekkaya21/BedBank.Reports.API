@@ -9,6 +9,7 @@ namespace BedBankReports.API.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -16,7 +17,7 @@ namespace BedBankReports.API.Data
             modelBuilder.Seed();
             modelBuilder.Entity<Rate>()
                         .Property(p => p.DiffEuro)
-                        .HasComputedColumnSql("[OtherToPrice]-[OurBestPrice]");
+                        .HasComputedColumnSql("[OtherToPrice] - [OurBestPrice]");
             modelBuilder.Entity<Rate>()
                         .Property(p => p.DiffPercent)
                         .HasComputedColumnSql("([OtherToPrice]/[OurBestPrice])-1");
